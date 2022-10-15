@@ -17,7 +17,7 @@ public class SessionFactoryUtils {
         return factory.getCurrentSession();
     }
 
-    public void shotdown(){
+    public void shutdown(){
         if(factory != null){
             factory.close();
         }
