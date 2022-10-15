@@ -1,13 +1,14 @@
 package ru.mvgrebenyuk.hiberOne;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "product_id")
     private Long id;
 
     @Column(name = "title")
@@ -16,6 +17,13 @@ public class Product {
     @Column(name = "price")
     private int price;
 
+    @ManyToMany
+    @JoinTable(
+            name = "shop_history",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "client_id")
+    )
+    private List<Client> clients;
     public Product() {
     }
 
@@ -41,6 +49,14 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     @Override

@@ -1,10 +1,14 @@
-package ru.mvgrebenyuk.hiberOne;
+package ru.mvgrebenyuk.hiberOne.DAO;
 
 import org.hibernate.Session;
+import ru.mvgrebenyuk.hiberOne.Client;
+import ru.mvgrebenyuk.hiberOne.DaoInterfaces.ProductDao;
+import ru.mvgrebenyuk.hiberOne.Product;
+import ru.mvgrebenyuk.hiberOne.SessionFactoryUtils;
 
 import java.util.List;
 
-public class ProductDaoImpl implements ProductDao{
+public class ProductDaoImpl implements ProductDao {
 
     private SessionFactoryUtils sessionFactoryUtils;
 
@@ -51,5 +55,10 @@ public class ProductDaoImpl implements ProductDao{
             session.saveOrUpdate(product);
             session.getTransaction().commit();
         }
+    }
+
+    @Override
+    public List<Client> getClientsByPID(Long id) {
+        return null;
     }
 }

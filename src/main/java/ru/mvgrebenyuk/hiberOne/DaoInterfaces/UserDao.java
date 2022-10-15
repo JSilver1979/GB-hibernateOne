@@ -1,4 +1,6 @@
-package ru.mvgrebenyuk.hiberOne;
+package ru.mvgrebenyuk.hiberOne.DaoInterfaces;
+
+import ru.mvgrebenyuk.hiberOne.User;
 
 import java.util.List;
 

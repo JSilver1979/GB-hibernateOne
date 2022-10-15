@@ -1,10 +1,13 @@
-package ru.mvgrebenyuk.hiberOne;
+package ru.mvgrebenyuk.hiberOne.DAO;
 
 import org.hibernate.Session;
+import ru.mvgrebenyuk.hiberOne.DaoInterfaces.UserDao;
+import ru.mvgrebenyuk.hiberOne.SessionFactoryUtils;
+import ru.mvgrebenyuk.hiberOne.User;
 
 import java.util.List;
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     private SessionFactoryUtils sessionFactoryUtils;
 
