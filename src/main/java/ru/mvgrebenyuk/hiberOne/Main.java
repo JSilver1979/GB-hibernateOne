@@ -28,8 +28,7 @@ public class Main {
 
                 ClientDao clientDao = new ClientDaoImpl(sessionFactoryUtils);
 //                System.out.println(clientDao.getAllClients());
-                System.out.println("--------");
-                System.out.println(clientDao.findById(1L));
+                System.out.println(productDao.getClientsByPID(3L));
                 System.out.println("-------");
                 System.out.println(clientDao.getProductsByCID(1L));
             } catch (Exception e){
