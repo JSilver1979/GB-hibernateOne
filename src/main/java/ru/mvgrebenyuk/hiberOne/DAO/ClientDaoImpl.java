@@ -2,6 +2,8 @@ package ru.mvgrebenyuk.hiberOne.DAO;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ru.mvgrebenyuk.hiberOne.Client;
 import ru.mvgrebenyuk.hiberOne.DaoInterfaces.ClientDao;
 import ru.mvgrebenyuk.hiberOne.Product;
@@ -9,9 +11,11 @@ import ru.mvgrebenyuk.hiberOne.SessionFactoryUtils;
 
 import java.util.List;
 
+@Repository
 public class ClientDaoImpl implements ClientDao {
     private SessionFactoryUtils sessionFactoryUtils;
 
+    @Autowired
     public ClientDaoImpl(SessionFactoryUtils sessionFactoryUtils) {
         this.sessionFactoryUtils = sessionFactoryUtils;
     }
