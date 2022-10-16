@@ -1,13 +1,22 @@
-package ru.mvgrebenyuk.hiberOne;
+package ru.mvgrebenyuk.hiberOne.DAO;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import ru.mvgrebenyuk.hiberOne.Client;
+import ru.mvgrebenyuk.hiberOne.DaoInterfaces.ProductDao;
+import ru.mvgrebenyuk.hiberOne.Product;
+import ru.mvgrebenyuk.hiberOne.SessionFactoryUtils;
 
 import java.util.List;
 
-public class ProductDaoImpl implements ProductDao{
+@Repository
+public class ProductDaoImpl implements ProductDao {
 
     private SessionFactoryUtils sessionFactoryUtils;
 
+    @Autowired
     public ProductDaoImpl(SessionFactoryUtils sessionFactoryUtils) {
         this.sessionFactoryUtils = sessionFactoryUtils;
     }
@@ -50,6 +59,19 @@ public class ProductDaoImpl implements ProductDao{
             session.beginTransaction();
             session.saveOrUpdate(product);
             session.getTransaction().commit();
+        }
+    }
+
+    @Override
+    public List<Client> getClientsByPID(Long id) {
+        try (Session session = sessionFactoryUtils.getSession()) {
+            session.beginTransaction();
+            Product product = session.get(Product.class, id);
+            System.out.println(product);
+            List<Client> clients = product.getClients();
+            Hibernate.initialize(clients);
+            session.getTransaction().commit();
+            return clients;
         }
     }
 }

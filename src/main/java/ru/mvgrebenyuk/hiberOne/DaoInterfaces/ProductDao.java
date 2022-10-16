@@ -1,4 +1,7 @@
-package ru.mvgrebenyuk.hiberOne;
+package ru.mvgrebenyuk.hiberOne.DaoInterfaces;
+
+import ru.mvgrebenyuk.hiberOne.Client;
+import ru.mvgrebenyuk.hiberOne.Product;
 
 import java.util.List;
 
@@ -10,4 +13,6 @@ public interface ProductDao {
     void deleteById(Long id);
 
     void saveOrUpdate(Product product);
+
+    List<Client> getClientsByPID(Long id);
 }
